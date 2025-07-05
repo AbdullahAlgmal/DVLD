@@ -43,7 +43,7 @@
                 {
                     Model = new(Id,
                                 reader.GetString(reader.GetOrdinal("Application_Type_Title")),
-                                reader.GetDecimal(reader.GetOrdinal("Application_Fees")));
+                                Convert.ToSingle(reader.GetFloat(reader.GetOrdinal("Application_Fees"))));
                 }
             }
             catch (Exception)
