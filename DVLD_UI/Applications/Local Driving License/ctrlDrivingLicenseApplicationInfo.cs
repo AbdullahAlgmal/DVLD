@@ -42,7 +42,7 @@
 
         private void _FillLocalDrivingLicenseApplicationInfo()
         {
-            _LicenseId = LocalDrivingLicensApplication.GetActiveLicenseId();
+            _LicenseId = LocalDrivingLicensApplication.GetActiveLicenseId(_LocalDrivingLicenseApplication?.Application?.PersonId ?? 0, _LocalDrivingLicenseApplication?.LicenseClassId ?? 0);
 
             llShowLicensInfo.Enabled = (_LicenseId != default);
 
