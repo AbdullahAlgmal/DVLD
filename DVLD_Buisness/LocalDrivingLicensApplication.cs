@@ -8,6 +8,6 @@
         static public bool Add(LocalDrivingLicensApplicationModel Model) => LocalDrivingLicensApplicationQuery.Add(Model);
         static public bool Update(LocalDrivingLicensApplicationModel Model) => LocalDrivingLicensApplicationQuery.Update(Model);
         static public byte GetPassedTestCount(int LocalDrivingLicensApplicationId) => TestQuery.GetPassedTestCount(LocalDrivingLicensApplicationId);
-        static public int GetActiveLicenseId() => 0;
+        static public int GetActiveLicenseId(int PersonId, int LicenseClassId) => LicenseQuery.GetActiveLicenseIDByPersonId(PersonId, LicenseClassId);
     }
 }

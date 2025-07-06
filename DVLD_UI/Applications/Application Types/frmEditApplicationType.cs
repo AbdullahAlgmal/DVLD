@@ -32,7 +32,7 @@
             }
 
             _ApplicationType!.Title = txtTitle.Text.Trim();
-            _ApplicationType.Fees = Convert.ToDecimal(txtFees.Text.Trim());
+            _ApplicationType.Fees = Convert.ToSingle(txtFees.Text.Trim());
 
             if (ApplicationType.Update(_ApplicationType))
                 MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);

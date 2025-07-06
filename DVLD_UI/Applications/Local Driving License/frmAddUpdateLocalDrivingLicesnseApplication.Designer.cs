@@ -163,7 +163,7 @@
             label1.Name = "label1";
             label1.Size = new Size(122, 19);
             label1.TabIndex = 46;
-            label1.Text = "License Class:";
+            label1.Text = "License0 Class:";
             // 
             // lblApplicationDate
             // 
@@ -312,7 +312,7 @@
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(800, 55);
             lblTitle.TabIndex = 3;
-            lblTitle.Text = "Local Driving License Application";
+            lblTitle.Text = "Local Driving License0 Application";
             lblTitle.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // frmAddUpdateLocalDrivingLicesnseApplication

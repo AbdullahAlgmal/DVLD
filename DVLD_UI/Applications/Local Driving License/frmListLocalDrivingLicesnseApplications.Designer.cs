@@ -50,7 +50,7 @@
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(265, 29);
             lblTitle.TabIndex = 27;
-            lblTitle.Text = "Local Driving License Applications";
+            lblTitle.Text = "Local Driving License0 Applications";
             lblTitle.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // pictureBox1

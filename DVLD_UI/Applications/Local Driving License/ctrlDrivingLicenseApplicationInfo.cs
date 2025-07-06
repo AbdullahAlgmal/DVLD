@@ -48,7 +48,7 @@
 
             lblDLAppId.Text = _LocalDrivingLicenseApplication?.Id.ToString() ?? "0";
             lblAppliedForLicense.Text = _LocalDrivingLicenseApplication?.LicenseClass?.ClassName ?? "[???]";
-            lblPassedTests.Text = LocalDrivingLicensApplication.GetPassedTestCount().ToString() + "/3";
+            lblPassedTests.Text = LocalDrivingLicensApplication.GetPassedTestCount(_LocalDrivingLicenseApplication?.Id ?? 0).ToString() + "/3";
             ctrlApplicationBasicInfo1.LoadApplicationInfo(_LocalDrivingLicenseApplication?.ApplicationId ?? 0);
         }
         private void _ResetLocalDrivingLicenseApplicationInfo()
