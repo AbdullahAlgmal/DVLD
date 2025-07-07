@@ -204,7 +204,7 @@
 
             return Result;
         }
-        public static byte TotalTrialsPerTest(int LocalDrivingLicenseApplicationId, int TestTypeId)
+        public static byte TotalTrialsPerTest(int LocalDrivingLicenseApplicationId, byte TestTypeId)
         {
             byte Result;
 
@@ -229,7 +229,7 @@
 
             return Result;
         }
-        public static bool IsThereAnActiveScheduledTest(int LocalDrivingLicenseApplicationId, int TestTypeId)
+        public static bool IsThereAnActiveScheduledTest(int LocalDrivingLicenseApplicationId, byte TestTypeId)
         {
             bool Result = false;
 

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace DVLD_DataAccess.Queries
+﻿namespace DVLD_DataAccess.Queries
 {
     public class DetainedLicenseQuery
     {

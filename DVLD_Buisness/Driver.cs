@@ -7,5 +7,7 @@
         static public DriverModel? FindForPersonId(int PersonId) => DriverQuery.GetForPersonId(PersonId);
         static public bool Add(DriverModel Model) => DriverQuery.Add(Model);
         static public bool Update(DriverModel Model) => DriverQuery.Update(Model);
+        public static DataTable GetLicenses(int DriverID) => LicenseQuery.GetDriverLicenses(DriverID);
+        public static DataTable GetInternationalLicenses(int DriverID) => InternationalLicenseQuery.GetDriverInternationalLicenses(DriverID);
     }
 }

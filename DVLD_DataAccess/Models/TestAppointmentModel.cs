@@ -42,6 +42,21 @@ namespace DVLD_DataAccess.Models
         }
         [Column("Local_Driving_Licens_Application_Id")]
         public int LocalDrivingLicensApplicationId { get; set; }
+        [Column("Retake_Test_ApplicationI_Id")]
+        public int RetakeTestApplicationId { get; set; }
+        private ApplicationModel? _RetakeApplication;
+        public ApplicationModel? RetakeApplication
+        {
+            get
+            {
+                if (_LocalDrivingLicensApplication is null) _RetakeApplication = ApplicationQuery.Get(RetakeTestApplicationId);
+                return _RetakeApplication;
+            }
+            set
+            {
+                _RetakeApplication = value;
+            }
+        }
         private LocalDrivingLicensApplicationModel? _LocalDrivingLicensApplication;
         public LocalDrivingLicensApplicationModel? LocalDrivingLicensApplication
         {
@@ -64,7 +79,8 @@ namespace DVLD_DataAccess.Models
                                     float paidFees,
                                     int userId,
                                     byte testTypeId,
-                                    int localDrivingLicensApplicationId)
+                                    int localDrivingLicensApplicationId,
+                                    int retakeTestApplicationId)
         {
             TestAppointmentId = testAppointmentId;
             AppointmentDate = appointmentDate;
@@ -73,6 +89,7 @@ namespace DVLD_DataAccess.Models
             UserId = userId;
             TestTypeId = testTypeId;
             LocalDrivingLicensApplicationId = localDrivingLicensApplicationId;
+            RetakeTestApplicationId = retakeTestApplicationId;
         }
     }
 }

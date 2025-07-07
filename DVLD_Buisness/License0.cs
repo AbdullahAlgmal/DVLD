@@ -11,7 +11,8 @@
         static public bool Add(LicenseModel Model) => LicenseQuery.Add(Model);
         static public bool Update(LicenseModel Model) => LicenseQuery.Update(Model);
         static public bool DeactivateLicense(int Id) => LicenseQuery.DeactivateLicense(Id);
-        public LicenseModel? RenewLicense(string Notes, int CreatedByUserId, LicenseModel Model)
+        static public bool IsDetained(int Id) => DetainedLicenseQuery.IsLicenseDetained(Id);
+        static public LicenseModel? RenewLicense(string Notes, int CreatedByUserId, LicenseModel Model)
         {
             ApplicationModel Application = new (default,
                                                 Model?.Driver?.PersonId
@@ -51,7 +52,7 @@
 
             return NewLicense;
         }
-        public LicenseModel? Replace(enIssueReason IssueReason, int CreatedByUserId, LicenseModel Model)
+        static public LicenseModel? Replace(enIssueReason IssueReason, int CreatedByUserId, LicenseModel Model)
         {
             ApplicationModel Application = new(default,
                                                 Model?.Driver?.PersonId
@@ -92,6 +93,18 @@
             LicenseQuery.DeactivateLicense(Model?.LicenseId ?? 0);
 
             return NewLicense;
+        }
+        static public int Detain(float FineFees, int CreatedByUserID, LicenseModel Model)
+        {
+            DetainedLicenseModel detainedLicense = new();
+            detainedLicense.LicenseId = Model.LicenseId;
+            detainedLicense.DetainDate = DateTime.Now;
+            detainedLicense.FineFees = Convert.ToSingle(FineFees);
+            detainedLicense.CreatedByUserId = CreatedByUserID;
+
+            if (!DetainedLicense.Add(detainedLicense))
+                return default;
+            return detainedLicense.DetainedLicenseId;
         }
     }
 }
