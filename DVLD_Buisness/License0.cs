@@ -94,6 +94,26 @@
 
             return NewLicense;
         }
+        static public bool Release(int detainedlicense, int ReleasedByUserID, ref int ApplicationID, LicenseModel Model)
+        {
+            ApplicationModel? Application = new(ApplicationID,
+                                               Model.Driver?.PersonId ?? 0,
+                                               DateTime.Now,
+                                               (int)Application0.enApplicationType.ReleaseDetainedDrivingLicsense,
+                                               (byte)Application0.enApplicationStatus.Completed,
+                                               DateTime.Now,
+                                               ApplicationType.Find((int)Application0.enApplicationType.ReleaseDetainedDrivingLicsense)?.Fees ?? 0,
+                                               ReleasedByUserID);
+            if (!Application0.Add(Application))
+            {
+                ApplicationID = default;
+                return false;
+            }
+
+            ApplicationID = Application.ApplicationId;
+
+            return DetainedLicenseQuery.ReleaseDetainedLicense(detainedlicense, ReleasedByUserID, Application.ApplicationId);
+        }
         static public int Detain(float FineFees, int CreatedByUserID, LicenseModel Model)
         {
             DetainedLicenseModel detainedLicense = new();

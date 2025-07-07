@@ -1,4 +1,6 @@
-﻿namespace DVLD_UI.Applications.Local_Driving_License
+﻿using DVLD.DriverLicense;
+
+namespace DVLD_UI.Applications.Local_Driving_License
 {
     public partial class ctrlDrivingLicenseApplicationInfo : UserControl
     {
@@ -39,7 +41,6 @@
             }
             _FillLocalDrivingLicenseApplicationInfo();
         }
-
         private void _FillLocalDrivingLicenseApplicationInfo()
         {
             _LicenseId = LocalDrivingLicensApplication.GetActiveLicenseId(_LocalDrivingLicenseApplication?.Application?.PersonId ?? 0, _LocalDrivingLicenseApplication?.LicenseClassId ?? 0);
@@ -58,9 +59,10 @@
             lblDLAppId.Text = "[????]";
             lblAppliedForLicense.Text = "[????]";
         }
-
         private void llShowLicenceInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            frmShowLicenseInfo frm = new frmShowLicenseInfo(LocalDrivingLicensApplication.GetActiveLicenseId(_LocalDrivingLicenseApplication?.Application?.PersonId ?? 0, _LocalDrivingLicenseApplication?.LicenseClassId ?? 0));
+            frm.ShowDialog();
         }
     }
 }

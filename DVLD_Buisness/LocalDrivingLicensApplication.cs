@@ -12,6 +12,7 @@ namespace DVLD_Buisness
         static public bool Update(LocalDrivingLicensApplicationModel Model) => LocalDrivingLicensApplicationQuery.Update(Model);
         static public byte GetPassedTestCount(int LocalDrivingLicensApplicationId) => TestQuery.GetPassedTestCount(LocalDrivingLicensApplicationId);
         static public int GetActiveLicenseId(int PersonId, int LicenseClassId) => LicenseQuery.GetActiveLicenseIDByPersonId(PersonId, LicenseClassId);
+        static public bool IsLicenseIssued(int PersonId, int LicenseClassId) => (GetActiveLicenseId(PersonId, LicenseClassId) != default);
         static public bool DoesAttendTestType(int LocalDrivingLicenseApplicationId, byte TestTypeId) => LocalDrivingLicensApplicationQuery.DoesAttendTestType(LocalDrivingLicenseApplicationId, TestTypeId);
         static public bool DoesPassTestType(int LocalDrivingLicenseApplicationId, byte TestTypeId) => LocalDrivingLicensApplicationQuery.DoesPassTestType(LocalDrivingLicenseApplicationId, TestTypeId);
         static public bool IsThereAnActiveScheduledTest(int LocalDrivingLicenseApplicationId, byte TestTypeId) => LocalDrivingLicensApplicationQuery.IsThereAnActiveScheduledTest(LocalDrivingLicenseApplicationId, TestTypeId);
